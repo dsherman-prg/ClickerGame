@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">IdleGame</string>
+    <string name="test">Test</string>
+    <integer name="maxProgressInt">30</integer>
+    <integer name="currentProgressInt">0</integer>
+    <string name="points">0 iron</string>
+    <integer name="pointsInt">0</integer>
+
+    <string name="TownName">User\'s Town</string>
+    <string name="BtnHome">Home</string>
+    <string name="BtnCstm">Customization</string>
+    <string name="BtnShop">Shop</string>
+    <string name="ShopLabel">Purchase Quantity</string>
+    <string name="BtnAmt1">1</string>
+    <string name="BtnAmt2">10</string>
+    <string name="BtnAmt3">100</string>
+    <string name="shopBtnLabel">Buy</string>
+    <string name="idMultLabel">Click Multiplier</string>
+    <string name="multPrice">Base Cost: 1</string>
+    <string name="idIncrLabel">Click Increment</string>
+    <string name="incrPrice">Base Cost: 1</string>
+</resources>
