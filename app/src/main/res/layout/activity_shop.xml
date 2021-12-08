@@ -44,8 +44,8 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/idTitle2"
-        android:layout_width="129dp"
+        android:id="@+id/spIdTitle"
+        android:layout_width="300dp"
         android:layout_height="49dp"
         android:layout_marginTop="36dp"
         android:gravity="center_horizontal"
@@ -154,7 +154,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTitle2" />
+        app:layout_constraintTop_toBottomOf="@+id/spIdTitle" />
 
     <TextView
         android:id="@+id/idMultCost"

@@ -20,22 +20,24 @@ class MainActivity : AppCompatActivity() {
         var clickMult = 0
         val points = findViewById<TextView>(R.id.idPoints)
         val clicked = findViewById<ImageButton>(R.id.imgBtn)
+        val townNameLabel = findViewById<TextView>(R.id.idTitle)
         var townName = "User"
-        var townAge = 0
+        var townAge = "0"
         var birthdayMonth = "Jan"
-        var birthdayDate = 0
+        var birthdayDate = ""
 
         val extras = intent.extras
         if (extras != null) {
             clicks = extras.getInt("iron")
             clickMult = extras.getInt("clickMult")
             clickIncr = extras.getInt("clickIncr")
-            townName = extras.getString("townName").toString()
-            townAge = extras.getInt("townAge")
-            birthdayMonth = extras.getString("userBirthdayMonth").toString()
-            birthdayDate = extras.getInt("userBirthdayDate")
+            townName = extras.getString("townName").orEmpty()
+            townAge = extras.getString("townAge").orEmpty()
+            birthdayMonth = extras.getString("userBirthdayMonth").orEmpty()
+            birthdayDate = extras.getString("userBirthdayDate").orEmpty()
             //The key argument here must match that used in the other activity
             points.text = (clicks).toString() + " iron"
+            townNameLabel.text = townName+"'s Town"
         }
 
         clicked.setOnClickListener {

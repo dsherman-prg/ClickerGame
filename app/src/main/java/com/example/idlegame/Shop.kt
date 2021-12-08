@@ -25,22 +25,23 @@ class Shop : AppCompatActivity() {
         val purQuant1 = findViewById<RadioButton>(R.id.idRB1)
         val purQuant10 = findViewById<RadioButton>(R.id.idRB10)
         val purQuant100 = findViewById<RadioButton>(R.id.idRB100)
-
+        val townNameLabel = findViewById<TextView>(R.id.spIdTitle)
         var townName = "User"
-        var townAge = 0
+        var townAge = ""
         var birthdayMonth = "Jan"
-        var birthdayDate = 0
+        var birthdayDate = ""
 
         val extras = intent.extras
         if (extras != null) {
             clicks = extras.getInt("iron")
             clickMultPurc = extras.getInt("clickMult")
             clickIncrPurc = extras.getInt("clickIncr")
-            townName = extras.getString("townName").toString()
-            townAge = extras.getInt("townAge")
-            birthdayMonth = extras.getString("userBirthdayMonth").toString()
-            birthdayDate = extras.getInt("userBirthdayDate")
+            townName = extras.getString("townName").orEmpty()
+            townAge = extras.getString("townAge").orEmpty()
+            birthdayMonth = extras.getString("userBirthdayMonth").orEmpty()
+            birthdayDate = extras.getString("userBirthdayDate").orEmpty()
             //The key argument here must match that used in the other activity
+            townNameLabel.text = townName+"'s Town"
         }
 
         clickMultPrice.text = "Base Cost: "+((1+clickMultPurc)*increment).toString()
