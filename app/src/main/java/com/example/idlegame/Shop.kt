@@ -13,7 +13,7 @@ class Shop : AppCompatActivity() {
         setContentView(R.layout.activity_shop)
         val points = findViewById<TextView>(R.id.spIdPoints)
         var clicks = 0
-        val increment = 1.5
+        val increment = 2.0
         var clickMultPurc = 0
         var clickIncrPurc = 0
         val clickMultPrice = findViewById<TextView>(R.id.idMultCost)
