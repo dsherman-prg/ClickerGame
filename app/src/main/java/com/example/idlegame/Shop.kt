@@ -26,11 +26,20 @@ class Shop : AppCompatActivity() {
         val purQuant10 = findViewById<RadioButton>(R.id.idRB10)
         val purQuant100 = findViewById<RadioButton>(R.id.idRB100)
 
+        var townName = "User"
+        var townAge = 0
+        var birthdayMonth = "Jan"
+        var birthdayDate = 0
+
         val extras = intent.extras
         if (extras != null) {
             clicks = extras.getInt("iron")
             clickMultPurc = extras.getInt("clickMult")
             clickIncrPurc = extras.getInt("clickIncr")
+            townName = extras.getString("townName").toString()
+            townAge = extras.getInt("townAge")
+            birthdayMonth = extras.getString("userBirthdayMonth").toString()
+            birthdayDate = extras.getInt("userBirthdayDate")
             //The key argument here must match that used in the other activity
         }
 
@@ -83,9 +92,23 @@ class Shop : AppCompatActivity() {
             i.putExtra("iron", clicks)
             i.putExtra("clickMult", clickMultPurc)
             i.putExtra("clickIncr", clickIncrPurc)
+            i.putExtra("townName", townName)
+            i.putExtra("townAge", townAge)
+            i.putExtra("userBirthdayMonth", birthdayMonth)
+            i.putExtra("userBirthdayDate", birthdayDate)
             startActivity(i)
-
         }
-
+        val btnCstm = findViewById<Button>(R.id.spBtnCstm)
+        btnCstm.setOnClickListener{
+            val i = Intent(this, Customization::class.java)
+            i.putExtra("iron", clicks)
+            i.putExtra("clickMult", clickMultPurc)
+            i.putExtra("clickIncr", clickIncrPurc)
+            i.putExtra("townName", townName)
+            i.putExtra("townAge", townAge)
+            i.putExtra("userBirthdayMonth", birthdayMonth)
+            i.putExtra("userBirthdayDate", birthdayDate)
+            startActivity(i)
+        }
     }
 }
