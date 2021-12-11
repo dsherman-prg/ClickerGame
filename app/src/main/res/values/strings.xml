@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">IdleGame</string>
     <string name="test">Test</string>
-    <integer name="maxProgressInt">30</integer>
-    <integer name="currentProgressInt">0</integer>
+    <string name="birthdayAnnouncement">It\'s your birthday, 2x iron gathering</string>
     <string name="points">0 iron</string>
     <integer name="pointsInt">0</integer>
 

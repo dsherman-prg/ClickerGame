@@ -37,14 +37,14 @@
         android:id="@+id/idPoints"
         android:layout_width="380dp"
         android:layout_height="68dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="52dp"
         android:gravity="center"
         android:text="@string/points"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/idBirthdayAnn" />
 
     <Button
         android:id="@+id/btnHome"
@@ -81,5 +81,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.306"
         app:layout_constraintStart_toEndOf="@+id/btnCstm" />
+
+    <TextView
+        android:id="@+id/idBirthdayAnn"
+        android:layout_width="304dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="@string/birthdayAnnouncement"
+        android:textIsSelectable="false"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,23 @@
 package com.example.idlegame
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import java.lang.Integer.getInteger
+import androidx.annotation.RequiresApi
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
 
 
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,10 +28,17 @@ class MainActivity : AppCompatActivity() {
         val points = findViewById<TextView>(R.id.idPoints)
         val clicked = findViewById<ImageButton>(R.id.imgBtn)
         val townNameLabel = findViewById<TextView>(R.id.idTitle)
+        val birthdayAnn = findViewById<TextView>(R.id.idBirthdayAnn)
         var townName = "User"
         var townAge = "0"
-        var birthdayMonth = "Jan"
+        var birthdayMonth = 0
         var birthdayDate = ""
+        var birthday = false
+        val date = LocalDate.now()
+        val dayFormatter = DateTimeFormatter.ofPattern("dd")
+        val monthFormatter = DateTimeFormatter.ofPattern("MM")
+        var currentMonth = ""
+        var currentDay = ""
 
         val extras = intent.extras
         if (extras != null) {
@@ -33,16 +47,31 @@ class MainActivity : AppCompatActivity() {
             clickIncr = extras.getInt("clickIncr")
             townName = extras.getString("townName").orEmpty()
             townAge = extras.getString("townAge").orEmpty()
-            birthdayMonth = extras.getString("userBirthdayMonth").orEmpty()
+            birthdayMonth = extras.getInt("userBirthdayMonth")
             birthdayDate = extras.getString("userBirthdayDate").orEmpty()
             //The key argument here must match that used in the other activity
             points.text = (clicks).toString() + " iron"
             townNameLabel.text = townName+"'s Town"
         }
 
+        // Check if it is the user's birthday
+        currentMonth = date.format(monthFormatter)
+        currentDay = date.format(dayFormatter)
+        // add one to birthdayMonth because spinner starts at 0 while calendar starts at 1
+        if ((birthdayMonth)+1 == currentMonth.toInt() && birthdayDate == currentDay){
+            birthdayAnn.visibility = View.VISIBLE
+            birthday = true
+        }
+
+        //When the image is clicked add value to the iron/points
         clicked.setOnClickListener {
-            clicks += (clickIncr + 1) * (clickMult+1)
-            points.text = (clicks).toString() + " iron"
+            if (birthday){
+                clicks += ((clickIncr + 1) * (clickMult+1))*2
+                points.text = (clicks).toString() + " iron"
+            }else{
+                clicks += (clickIncr + 1) * (clickMult+1)
+                points.text = (clicks).toString() + " iron"
+            }
         }
 
         // Button to go to shop menu
@@ -59,6 +88,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
 
+        // Button to go to the customization menu
         val btnCstm = findViewById<Button>(R.id.btnCstm)
         btnCstm.setOnClickListener{
             val i = Intent(this, Customization::class.java)

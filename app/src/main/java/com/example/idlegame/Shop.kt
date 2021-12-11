@@ -1,5 +1,6 @@
 package com.example.idlegame
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 
 class Shop : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
@@ -28,17 +30,18 @@ class Shop : AppCompatActivity() {
         val townNameLabel = findViewById<TextView>(R.id.spIdTitle)
         var townName = "User"
         var townAge = ""
-        var birthdayMonth = "Jan"
+        var birthdayMonth = 0
         var birthdayDate = ""
 
         val extras = intent.extras
+        // Load in extra information from previous page
         if (extras != null) {
             clicks = extras.getInt("iron")
             clickMultPurc = extras.getInt("clickMult")
             clickIncrPurc = extras.getInt("clickIncr")
             townName = extras.getString("townName").orEmpty()
             townAge = extras.getString("townAge").orEmpty()
-            birthdayMonth = extras.getString("userBirthdayMonth").orEmpty()
+            birthdayMonth = extras.getInt("userBirthdayMonth")
             birthdayDate = extras.getString("userBirthdayDate").orEmpty()
             //The key argument here must match that used in the other activity
             townNameLabel.text = townName+"'s Town"
@@ -99,6 +102,8 @@ class Shop : AppCompatActivity() {
             i.putExtra("userBirthdayDate", birthdayDate)
             startActivity(i)
         }
+
+        // Button to go to the customization menu
         val btnCstm = findViewById<Button>(R.id.spBtnCstm)
         btnCstm.setOnClickListener{
             val i = Intent(this, Customization::class.java)
