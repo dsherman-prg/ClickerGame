@@ -45,8 +45,6 @@ class Customization : AppCompatActivity() {
             townNameLabel.text = townName+"'s Town"
             editedTownAge.setText(townAge)
             editedBirthMonth.setSelection(birthdayMonth)
-        //Figure out how to load the spinner from history
-        //editedBirthMonth
         }
 
         // Button to go to home menu
